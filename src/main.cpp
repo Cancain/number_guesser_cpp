@@ -8,12 +8,15 @@ using std::string;
 using std::cout;
 using std::endl;
 
+
 int main(){
   string name{get_name()};
 
-  int random_number {get_random_number(4, 5)};
+
+  Guess_parameters guess_parameters {get_guess_parameters()};
+
+  int random_number {get_random_number(3, 5)};
   
-  cout << name << endl;
   return 0;
 }
 
