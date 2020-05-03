@@ -2,6 +2,8 @@
 #include "number_generator.h"
 
 int main(){
-  get_random_number(1, 10);
+  int random_number {get_random_number(4, 5)};
+  
+  std::cout << random_number << std::endl;
   return 0;
 }
