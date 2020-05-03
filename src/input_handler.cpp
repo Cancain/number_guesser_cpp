@@ -53,6 +53,9 @@ bool invalid_input();
 void get_min(int &min);
 void get_max(int &max, int min);
 
+const int minimum_value {1};
+const int maximum_value {1000};
+
 Guess_parameters get_guess_parameters() {
   Guess_parameters guess_parameters{};
 
@@ -62,19 +65,25 @@ Guess_parameters get_guess_parameters() {
   return guess_parameters;
 }
 
+void minimum_promt(){
+  cout << "Please enter a number between " << minimum_value << " - " << maximum_value - 1 << ": ";
+}
+
+void maximum_prompt(int min_value) {
+  cout << "Please enter a number between " << min_value + 1 << " - " << maximum_value << ": ";
+}
+
 void get_min(int &min){
   while(incorrect_min_parameter(min)){
-    cout << "Please input the minimum guess: ";
     cin >> min;
   }
 }
 
 void get_max(int &max, int min){
-  cout << "Please input the maximum guess: ";
+  maximum_prompt(min);
   cin >> max;
 
   while(incorrect_max_parameter(max, min)){
-    cout << "Please input the maximum guess again: ";
     cin >> max;
   }
 }
@@ -89,15 +98,17 @@ bool invalid_input(){
   return false;
 }
 
+
 bool incorrect_min_parameter(int min){
 
   if(invalid_input()){
     cout << "You must enter a number... try again" << endl;
+    minimum_promt();
     return true;
   }
 
-  if(min < 1 || min > 1000){
-    cout << "Please enter a number b between 1-1000" << endl;
+  if(min < minimum_value || min > maximum_value - 1){
+    minimum_promt();
     return true;
   }
 
@@ -105,18 +116,21 @@ bool incorrect_min_parameter(int min){
 }
 
 bool incorrect_max_parameter(int max, int min){
+
   if(invalid_input()){
     cout << "You must enter a number... try again" << endl;
+    maximum_prompt(min);
     return true;
   }
 
-  if(max < 1 || max > 1000){
-    cout << "Please enter a number b between 1-1000" << endl;
+  if(max > maximum_value){
+    maximum_prompt(min);
     return true;
   }
 
   if(max <= min){
-    cout << "The maximum number must be one or greater then the minimum number" << endl;
+    cout << "The maximum number must be greater then the minimum number, try again " << endl;
+    cout << "Please enter a number between " << min + 1 << " - " << maximum_value << ": ";
     return true;
   }
 
