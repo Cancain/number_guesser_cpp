@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 
 #include "types.h"
 
@@ -48,6 +49,7 @@ void greeting(string name){
 //get_guess_parameters prototypes
 bool incorrect_min_parameter(int min);
 bool incorrect_max_parameter(int max, int min);
+bool invalid_input();
 void get_min(int &min);
 void get_max(int &max, int min);
 
@@ -61,11 +63,8 @@ Guess_parameters get_guess_parameters() {
 }
 
 void get_min(int &min){
-  cout << "Please input the minimum guess: ";
-  cin >> min;
-
   while(incorrect_min_parameter(min)){
-    cout << "Please input the minimum guess again: ";
+    cout << "Please input the minimum guess: ";
     cin >> min;
   }
 }
@@ -80,7 +79,23 @@ void get_max(int &max, int min){
   }
 }
 
+bool invalid_input(){
+  if(cin.fail()) {
+    cin.clear();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    return true;
+  }
+
+  return false;
+}
+
 bool incorrect_min_parameter(int min){
+
+  if(invalid_input()){
+    cout << "You must enter a number... try again" << endl;
+    return true;
+  }
+
   if(min < 1 || min > 1000){
     cout << "Please enter a number b between 1-1000" << endl;
     return true;
@@ -90,6 +105,11 @@ bool incorrect_min_parameter(int min){
 }
 
 bool incorrect_max_parameter(int max, int min){
+  if(invalid_input()){
+    cout << "You must enter a number... try again" << endl;
+    return true;
+  }
+
   if(max < 1 || max > 1000){
     cout << "Please enter a number b between 1-1000" << endl;
     return true;

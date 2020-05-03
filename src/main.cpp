@@ -9,6 +9,7 @@ using std::cout;
 using std::endl;
 
 int main(){
+  cout << typeid("asdad").name() << endl;
   string name{get_name()};
 
   Guess_parameters guess_parameters {get_guess_parameters()};
