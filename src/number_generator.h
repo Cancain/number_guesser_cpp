@@ -1,1 +1,3 @@
-int get_random_number(int min, int max);
+#include "input_handler.h"
+
+int get_random_number(Guess_parameters);

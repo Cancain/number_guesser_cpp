@@ -2,9 +2,12 @@
 #include <ctime>
 #include <iostream>
 
-int get_random_number(int min, int max){
+#include "types.h"
+
+int get_random_number(Guess_parameters guess_parameters){
   std::srand(std::time(nullptr));
   int random_number {std::rand()};
 
-  return min + (random_number % (max - min + 1));
+  return guess_parameters.min + 
+    (random_number % (guess_parameters.max - guess_parameters.min + 1));
 }

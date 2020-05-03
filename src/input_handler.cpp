@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
 
-#include "input_handler.h"
+#include "types.h"
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
 
+//get_name prototypes
 bool incorrect_name(string name);
 void greeting(string name);
 
@@ -44,16 +45,61 @@ void greeting(string name){
   cout << "Hello " << name << endl;
 }
 
+//get_guess_parameters prototypes
+bool incorrect_min_parameter(int min);
+bool incorrect_max_parameter(int max, int min);
+void get_min(int &min);
+void get_max(int &max, int min);
+
 Guess_parameters get_guess_parameters() {
   Guess_parameters guess_parameters{};
 
-  cout << "Please input the minimum guess and maximum guess seperated by a space: ";
-  cin >> guess_parameters.min;
-  cin >> guess_parameters.max;
-
-  cout << "min: " << guess_parameters.min << " max: " << guess_parameters.max << endl;
+  get_min(guess_parameters.min);
+  get_max(guess_parameters.max, guess_parameters.min);
 
   return guess_parameters;
 }
 
+void get_min(int &min){
+  cout << "Please input the minimum guess: ";
+  cin >> min;
+
+  while(incorrect_min_parameter(min)){
+    cout << "Please input the minimum guess again: ";
+    cin >> min;
+  }
+}
+
+void get_max(int &max, int min){
+  cout << "Please input the maximum guess: ";
+  cin >> max;
+
+  while(incorrect_max_parameter(max, min)){
+    cout << "Please input the maximum guess again: ";
+    cin >> max;
+  }
+}
+
+bool incorrect_min_parameter(int min){
+  if(min < 1 || min > 1000){
+    cout << "Please enter a number b between 1-1000" << endl;
+    return true;
+  }
+
+  return false;
+}
+
+bool incorrect_max_parameter(int max, int min){
+  if(max < 1 || max > 1000){
+    cout << "Please enter a number b between 1-1000" << endl;
+    return true;
+  }
+
+  if(max <= min){
+    cout << "The maximum number must be one or greater then the minimum number" << endl;
+    return true;
+  }
+
+  return false;
+}
 
