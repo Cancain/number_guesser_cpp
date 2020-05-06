@@ -143,8 +143,15 @@ string stringiefied_int(int number);
 int get_guess (int num_of_guesses){
   int guess {};
   cout << "This is your " << stringiefied_int(num_of_guesses) << " guess" << endl;
+  cout << "Please enter a guess: ";
+  cin >> guess;
 
-  return 0;
+  while(invalid_input()){
+    cout << "You must enter a number... try again: ";
+    cin >> guess;
+  }
+
+  return guess;
 }
 
 string stringiefied_int(int number){
