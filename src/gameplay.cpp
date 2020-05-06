@@ -17,11 +17,12 @@ void game_loop(Guess_parameters guess_parameters, int random_number){
   debug_data(guess_parameters, random_number);
 
   bool game_on = true;
-  bool num_of_guesses {1};
+  int num_of_guesses {1};
 
   while(game_on){
     int guess {get_guess(num_of_guesses)};
     check_guess(game_on, guess, random_number);
+    num_of_guesses += 1;
   }
 }
 
