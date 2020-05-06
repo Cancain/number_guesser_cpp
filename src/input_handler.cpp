@@ -137,3 +137,26 @@ bool incorrect_max_parameter(int max, int min){
   return false;
 }
 
+string stringiefied_int(int number){
+  string stringiefied_int = std::to_string(number);
+  switch (number) {
+    case 1:
+      return stringiefied_int + "st";
+    case 2: 
+      return stringiefied_int + "nd";
+    case 3: 
+      return stringiefied_int + "rd";
+    default:
+      return stringiefied_int + "th";
+  }
+}
+
+int get_guess (int num_of_guesses){
+  int guess {};
+  cout << "This is your " << stringiefied_int(num_of_guesses) << " guess" << endl;
+
+  return 0;
+}
+
+
+
