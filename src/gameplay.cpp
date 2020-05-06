@@ -6,8 +6,14 @@ using std::cout;
 using std::endl;
 
 void debug_data(Guess_parameters guess_parameters, int random_number){
-  std::cout << "Parameters: " << guess_parameters.min << " - " << guess_parameters.max
-    << " random number: " << random_number << std::endl;
+  std::cout 
+    << "Parameters: " 
+    << guess_parameters.min 
+    << " - " 
+    << guess_parameters.max
+    << " random number: " 
+    << random_number 
+    << std::endl;
 }
 
 //game_loop prototypes

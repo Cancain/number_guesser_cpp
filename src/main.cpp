@@ -6,8 +6,6 @@
 #include "gameplay.h"
 
 using std::string;
-using std::cout;
-using std::endl;
 
 int main(){
   string name{get_name()};
