@@ -3,6 +3,7 @@
 
 #include "number_generator.h"
 #include "input_handler.h"
+#include "gameplay.h"
 
 using std::string;
 using std::cout;
@@ -14,6 +15,8 @@ int main(){
   Guess_parameters guess_parameters {get_guess_parameters()};
 
   int random_number {get_random_number(guess_parameters)};
+
+  game_loop(guess_parameters, random_number);
   
   return 0;
 }
