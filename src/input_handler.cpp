@@ -137,6 +137,16 @@ bool incorrect_max_parameter(int max, int min){
   return false;
 }
 
+//get_guess prototypes
+string stringiefied_int(int number);
+
+int get_guess (int num_of_guesses){
+  int guess {};
+  cout << "This is your " << stringiefied_int(num_of_guesses) << " guess" << endl;
+
+  return 0;
+}
+
 string stringiefied_int(int number){
   string stringiefied_int = std::to_string(number);
   switch (number) {
@@ -150,13 +160,5 @@ string stringiefied_int(int number){
       return stringiefied_int + "th";
   }
 }
-
-int get_guess (int num_of_guesses){
-  int guess {};
-  cout << "This is your " << stringiefied_int(num_of_guesses) << " guess" << endl;
-
-  return 0;
-}
-
 
 
