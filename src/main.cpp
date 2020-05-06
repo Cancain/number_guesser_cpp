@@ -14,7 +14,7 @@ int main(){
 
   int random_number {get_random_number(guess_parameters)};
 
-  game_loop(guess_parameters, random_number);
+  game_loop(guess_parameters, random_number, true);
   
   return 0;
 }

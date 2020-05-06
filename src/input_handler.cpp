@@ -100,7 +100,6 @@ bool invalid_input(){
 
 
 bool incorrect_min_parameter(int min){
-
   if(invalid_input()){
     cout << "You must enter a number... try again" << endl;
     minimum_promt();
@@ -116,7 +115,6 @@ bool incorrect_min_parameter(int min){
 }
 
 bool incorrect_max_parameter(int max, int min){
-
   if(invalid_input()){
     cout << "You must enter a number... try again" << endl;
     maximum_prompt(min);

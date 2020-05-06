@@ -11,7 +11,7 @@ void debug_data(Guess_parameters guess_parameters, int random_number){
     << guess_parameters.min 
     << " - " 
     << guess_parameters.max
-    << " random number: " 
+    << ", random number: " 
     << random_number 
     << std::endl;
 }
@@ -19,8 +19,15 @@ void debug_data(Guess_parameters guess_parameters, int random_number){
 //game_loop prototypes
 void check_guess(bool &game_on, int guess, int random_number);
 
-void game_loop(Guess_parameters guess_parameters, int random_number){
-  debug_data(guess_parameters, random_number);
+void game_loop(
+    Guess_parameters guess_parameters, 
+    int random_number, 
+    bool debug_mode = false
+    ){
+
+  if(debug_mode){
+    debug_data(guess_parameters, random_number);
+  }
 
   bool game_on = true;
   int num_of_guesses {1};
